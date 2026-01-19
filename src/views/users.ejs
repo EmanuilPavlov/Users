@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="/styles/output.css" rel="stylesheet">
+    <title>Users</title>
+</head>
+<body class="bg-gray-50">
+
+<div class="container mx-auto p-6">
+
+    <!-- Top bar: Search + Create button -->
+    <div class="flex items-center justify-between mb-4">
+        <!-- Search form -->
+        <form action="/users" method="GET" class="flex gap-2">
+            <input
+                    type="text"
+                    name="q"
+                    value="<%= typeof query !== 'undefined' ? query : '' %>"
+                    placeholder="Search users..."
+                    class="border border-gray-300 rounded px-3 py-2 w-64"
+            />
+            <button
+                    type="submit"
+                    class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+            >
+                Search
+            </button>
+        </form>
+
+        <!-- Create button -->
+        <a
+                href="/users/create"
+                class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+        >
+            + Create User
+        </a>
+    </div>
+
+    <!-- Users table -->
+    <table class="min-w-full border border-gray-300 divide-y divide-gray-200 bg-white">
+        <thead class="bg-gray-100">
+        <tr>
+            <th class="px-2 py-2 text-left text-gray-700">#</th>
+            <th class="px-2 py-2 text-left text-gray-700">Name</th>
+            <th class="px-2 py-2 text-left text-gray-700">Email</th>
+            <th class="px-2 py-2 text-left text-gray-700">Actions</th>
+        </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200">
+
+        <% if (users && users.length > 0) { %>
+        <% users.forEach(function(user, index) { %>
+        <tr>
+            <td class="px-2 py-2"><%= index + 1 %></td>
+            <td class="px-2 py-2"><%= user.name %></td>
+            <td class="px-2 py-2"><%= user.email %></td>
+            <td class="px-2 py-2 flex gap-2">
+                <!-- Edit button -->
+                <a
+                        href="/users/<%= user.id %>/edit"
+                        class="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600"
+                >
+                    Edit
+                </a>
+
+                <!-- Delete button -->
+                <form
+                        action="/users/<%= user.id %>?_method=DELETE"
+                        method="POST"
+                        onsubmit="return confirm('Are you sure you want to delete this user?');"
+                >
+                    <button
+                            type="submit"
+                            class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700"
+                    >
+                        Delete
+                    </button>
+                </form>
+            </td>
+        </tr>
+        <% }) %>
+        <% } else { %>
+        <tr>
+            <td colspan="4" class="text-center py-4 text-gray-500">
+                No users found
+            </td>
+        </tr>
+        <% } %>
+
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
