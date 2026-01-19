@@ -28,6 +28,29 @@ A modern, full-stack user management system built with Node.js, TypeScript, Expr
 - Node.js 18+ and npm
 - MySQL 8.0+ (installed locally) **with a database named `users_db`**
 
+## 🧪 Sample Test Data
+
+Here's sample data you can use to test the application.
+
+### Method 1: SQL Insert (Recommended)
+Run this SQL **after starting the app** (tables will be created):
+
+```sql
+-- Switch to your database
+USE users_db;
+
+-- Insert sample users with realistic data
+INSERT INTO Users (id, name, email, avatar, avatarColor, createdAt, updatedAt) VALUES
+(1, 'Emanuil Pavlov', 'emanuil.pavlov@gmail.com', 'EP', '#9B59B6', '2026-01-18 17:22:42', '2026-01-19 15:46:40'),
+(2, 'Ivan Ivanov', 'ivan.i@gmail.com', 'II', '#9B59B6', '2026-01-18 18:03:36', '2026-01-19 16:27:28'),
+(3, 'Ivaylo Pavlov', 'ivaylo.pavlov2013@gmail.com', 'IP', '#34495E', '2026-01-19 12:14:10', '2026-01-19 16:10:37'),
+(4, 'Maria Petrova', 'maria.petrova@example.com', 'MP', '#E74C3C', '2026-01-19 10:00:00', '2026-01-19 10:00:00'),
+(5, 'Georgi Dimitrov', 'georgi.d@example.com', 'GD', '#2ECC71', '2026-01-19 11:00:00', '2026-01-19 11:00:00'),
+(6, 'Anna Ivanova', 'anna.i@example.com', 'AI', '#F39C12', '2026-01-19 12:00:00', '2026-01-19 12:00:00');
+
+-- Verify the data
+SELECT * FROM Users;
+
 ### Installation
 
 1. **Clone the repository**
