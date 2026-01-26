@@ -1,14 +1,33 @@
 {
-  "name": "${PROJECT_NAME}",
+  "name": "Users",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "ts-node src/server.ts",
+    "tailwind:build": "tailwindcss -i ./public/styles/input.css -o ./public/styles/output.css--minify",
+    "tailwind:watch": "tailwindcss -i ./public/styles/input.css -o ./public/styles/output.css --watch"
   },
-  "dependencies": {},
   "devDependencies": {
+    "@types/node": "^25.0.9",
+    "@types/tailwindcss": "^3.0.11",
     "typescript": "^5.5.3"
   },
-  "private": true
+  "private": true,
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.18",
+    "@types/express": "^5.0.6",
+    "autoprefixer": "^10.4.23",
+    "ejs": "^4.0.1",
+    "express": "^5.2.1",
+    "express-validator": "^7.3.1",
+    "method-override": "^3.0.0",
+    "mysql2": "^3.16.1",
+    "postcss": "^8.5.6",
+    "sequelize": "^6.37.7",
+    "tailwindcss": "^4.1.18",
+    "ts-node": "^10.9.2"
+  }
 }
